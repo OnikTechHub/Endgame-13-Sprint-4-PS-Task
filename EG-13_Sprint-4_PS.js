@@ -197,3 +197,39 @@ var productExceptSelf = function(nums) {
 
 
 console.log(productExceptSelf([1, 2, 3, 4])); 
+
+
+
+// 07. Remove Nth Node From End of List
+
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+    let dummy = new ListNode(0, head);
+    let slow = dummy;
+    let fast = dummy;
+    
+    
+    for (let i = 0; i <= n; i++) {
+        fast = fast.next;
+    }
+    
+    
+    while (fast !== null) {
+        slow = slow.next;
+        fast = fast.next;
+    }
+    
+    
+    slow.next = slow.next.next;
+    
+    return dummy.next;
+};
+
+
+let testListForRemove = createLinkedList([1, 2, 3, 4, 5]);
+let modifiedHead = removeNthFromEnd(testListForRemove, 2);
+console.log(linkedListToArray(modifiedHead)); 
