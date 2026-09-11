@@ -169,3 +169,31 @@ var middleNode = function(head) {
 let testListForMiddle = createLinkedList([1, 2, 3, 4, 5]);
 let middleHead = middleNode(testListForMiddle);
 console.log(linkedListToArray(middleHead)); 
+
+
+
+// 06. Product of Array Except Self
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var productExceptSelf = function(nums) {
+    const n = nums.length;
+    const res = new Array(n);
+    res[0] = 1;
+    for (let i = 1; i < n; i++) {
+        res[i] = res[i - 1] * nums[i - 1];
+    }
+    
+    let rightProduct = 1;
+    for (let i = n - 1; i >= 0; i--) {
+        res[i] *= rightProduct;
+        rightProduct *= nums[i];
+    }
+    
+    return res;
+};
+
+
+console.log(productExceptSelf([1, 2, 3, 4])); 
