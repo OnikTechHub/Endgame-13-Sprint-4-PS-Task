@@ -274,3 +274,33 @@ var searchRange = function(nums, target) {
 };
 
 console.log(searchRange([5, 7, 7, 8, 8, 10], 8)); 
+
+
+
+
+// 09. Permutation in String
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {boolean}
+ */
+var checkInclusion = function(s1, s2) {
+    if (s1.length > s2.length) return false;
+    
+    const sortStr = (str) => str.split('').sort().join('');
+    const sortedS1 = sortStr(s1);
+    const len = s1.length;
+    
+    for (let i = 0; i <= s2.length - len; i++) {
+        let subStr = s2.substring(i, i + len);
+        
+        if (sortStr(subStr) === sortedS1) {
+            return true;
+        }
+    }
+    
+    return false;
+};
+
+console.log(checkInclusion("ab", "eidbaooo")); 
