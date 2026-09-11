@@ -143,3 +143,29 @@ function linkedListToArray(head) {
 let testList = createLinkedList([1, 2, 3, 4, 5]);
 let reversedHead = reverseList(testList);
 console.log(linkedListToArray(reversedHead)); 
+
+
+
+
+
+// 05. Middle of the Linked List
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var middleNode = function(head) {
+    let slow = head;
+    let fast = head;
+    
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    return slow;
+};
+
+let testListForMiddle = createLinkedList([1, 2, 3, 4, 5]);
+let middleHead = middleNode(testListForMiddle);
+console.log(linkedListToArray(middleHead)); 
